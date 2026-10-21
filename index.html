@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
     <title>Task Manager</title>
 </head>
 <body>
     <main>
-        <h1>Task Manager</h1>
-        <p>Add a new task by filling fields below</p>
-        <form action="">
-            <input type="text" id="task-name" required name="name">
-            <select name="category" id="task-category">
+        <h1 class="main-header">Task Manager</h1>
+        <p class="sub-header">Add a new task by filling fields below</p>
+        <form action="" class="form">
+            <label for="task-name">Task name</label>
+            <input type="text" id="task-name" required name="name" placeholder="ex. clean up dishes" class="form__field">
+            <label for="task-category">Task category</label>
+            <select name="category" id="task-category" class="form__field">
                 <option value="work">Work</option>
                 <option value="education">Education</option>
                 <option value="other">Other</option>
             </select>
-            <input type="date">
-            <button type="submit"></button>
+            <label for="task-date">Task date</label>
+            <input type="date" id="task-date" class="form__field">
+            <button type="submit" class="form__btn">Submit</button>
         </form>
-        <h2>Current tasks:</h2>
-        <div id="task-list"></div>
+        <h2 class="second-header">Current tasks:</h2>
+        <div id="task-list">
+            <p>No tasks available</p>
+        </div>
     </main>
 </body>
 </html>
