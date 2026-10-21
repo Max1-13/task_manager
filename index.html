@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:opsz,wght@14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
     <title>Task Manager</title>
 </head>
 <body>
@@ -23,12 +24,14 @@
                 <option value="education">Education</option>
                 <option value="other">Other</option>
             </select>
-            <label for="task-date">Task date</label>
-            <input type="date" id="task-date" class="form__field">
+            <label for="task-description">Task description</label>
+            <textarea name="description" id="task-description" class="form__field"></textarea>
+            <label for="task-date">Due</label>
+            <input name="date" type="date" id="task-date" class="form__field">
             <button type="submit" class="form__btn">Submit</button>
         </form>
         <h2 class="second-header">Current tasks:</h2>
-        <div id="task-list">
+        <div id="task-list" class="tasks-container">
             <p>No tasks available</p>
         </div>
     </main>
