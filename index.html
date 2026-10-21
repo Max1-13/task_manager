@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <main>
+        <h1>Task Manager</h1>
+        <p>Add a new task by filling fields below</p>
+        <form action="">
+            <input type="text" id="task-name" required name="name">
+            <select name="category" id="task-category">
+                <option value="work">Work</option>
+                <option value="education">Education</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="date">
+            <button type="submit"></button>
+        </form>
+        <h2>Current tasks:</h2>
+        <div id="task-list"></div>
+    </main>
+</body>
+</html>
