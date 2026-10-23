@@ -7,7 +7,39 @@
 }
 
 :root {
+    --bg-body: hsl(0, 0%, 97%);
+    --bg-main: #fff;
+    --text-main: #000000;
+
+    /* btn */
+    --btn-bg: #000;
+    --btn-color: #fff;
+    --btn-bg-hover: #333333;
+
+    /* form */
+    --form-field: #fff;
+    --form-placeholder: #84848493;
+    --form-text: #000;
+    --calendar-filter: invert(0);
+
     --shadow: 0 1px 20px -10px #2f2f2f;
+
+}
+
+.dark-theme {
+    --bg-body: #2c2c2c;
+    --bg-main: #1c1c1c;
+    --text-main: #e0e0e0;
+
+    /* btn */
+    --btn-bg: #2f2f2f;
+    --btn-bg-hover: #676767;
+
+    /* form */
+    --form-field: #5f5f5f;
+    --form-placeholder: #a2a2a293;
+    --form-text: #fff;
+    --calendar-filter: invert(1);
 }
 
 a {
@@ -27,16 +59,49 @@ img {
 input, button, textarea, select {
     font: inherit;
     outline: none;
+    border: none;
+    resize: none;
 }
 
 body {
     font-family: "Roboto", sans-serif;
-    background-color: hsl(0, 0%, 97%);
+    background-color: var(--bg-body);
+    color: var(--text-main);
     min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--bg-main);
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.btn--theme-toggle {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    transition: all 0.1s ease-in-out;
+}
+
+.btn--theme-toggle:hover {
+    background-color: var(--btn-bg-hover);
 }
 
 main {
@@ -57,7 +122,7 @@ main {
 }
 
 .form {
-    background-color: #fff;
+    background-color: var(--bg-main);
     box-shadow: var(--shadow);
     width: 100%;
     max-width: 400px;
@@ -70,24 +135,33 @@ main {
 }
 
 .form__field {
-    background-color: #fff;
+    background-color: var(--form-field);
+    color: var(--form-text);
     padding: 0.5rem;
     border: 1px solid black;
+}
+
+.form__field::placeholder {
+    color: var(--form-placeholder);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: var(--calendar-filter);
 }
 
 .form__btn {
     align-self: flex-start;
     border: none;
-    border-radius: 10px;
     padding: 0.6rem 1.5rem;
-    background-color: #000;
+    background-color: var(--btn-bg);
     color: white;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
 }
 
 .form__btn:hover {
-    background-color: #444444;
+    background-color: var(--btn-bg-hover);
 }
 
 .form__btn:focus {
@@ -106,8 +180,7 @@ main {
 }
 
 .task-card {
-    color: #000;
-    background-color: #fff;
+    background-color: var(--bg-main);
     border-radius: 10px;
     box-shadow: var(--shadow);
     padding: 1rem;
@@ -136,6 +209,7 @@ main {
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: pre-wrap;
+    margin-bottom: 1rem;
 }
 
 .task-card__date {
@@ -143,8 +217,8 @@ main {
 }
 
 .task-card__delete-btn {
-    background-color: #000;
-    color: white;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
     border: none;
     align-self: flex-end;
     padding: 0.5rem 1rem;
@@ -153,5 +227,5 @@ main {
 }
 
 .task-card__delete-btn:hover {
-    background-color: #b90000;
+    background-color: #d20000;
 }
