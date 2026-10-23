@@ -2,7 +2,53 @@ let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 renderTasks();
 
+// theme toggle
+
+const toggleBtn = document.querySelector("#theme-toggle");
+
+if (localStorage.getItem('theme') === "dark") {
+    document.body.classList.add('dark-theme');
+}
+
+toggleBtn.addEventListener('click', () => {
+
+    if (document.body.classList.toggle('dark-theme')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+})
+
+// form saving
+
 const form = document.querySelector('.form');
+
+form.addEventListener('input', () => {
+    
+    const draft = {
+        taskName: document.querySelector('#task-name').value,
+        taskCategory: document.querySelector('#task-category').value,
+        taskDescription: document.querySelector('#task-description').value,
+        taskDate: document.querySelector('#task-date').value
+    };
+
+    localStorage.setItem('draft', JSON.stringify(draft));
+})
+
+// retriving saved form data
+
+const savedDraft = localStorage.getItem('draft');
+
+if(savedDraft) {
+    const parsedDraft = JSON.parse(savedDraft);
+
+    document.querySelector('#task-name').value = parsedDraft.taskName;
+    document.querySelector('#task-category').value = parsedDraft.taskCategory;
+    document.querySelector('#task-description').value = parsedDraft.taskDescription;
+    document.querySelector('#task-date').value = parsedDraft.taskDate;
+}
+
+// getting form data
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -25,8 +71,11 @@ form.addEventListener('submit', (e) => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
     form.reset();
+    localStorage.removeItem('draft');
     renderTasks();
 });
+
+// render task
 
 function renderTasks() {
     const tasksContainer = document.querySelector('#task-list');
@@ -51,6 +100,8 @@ function renderTasks() {
     }
     
 }
+
+// delete task
 
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
